@@ -43,6 +43,7 @@
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'grow': 'grow 0.5s ease-out forwards',
               'sway': 'sway 4s ease-in-out infinite',
+              'bounce-care': 'bounce-care 0.8s ease-in-out',
             },
             keyframes: {
               grow: {
@@ -52,6 +53,10 @@
               sway: {
                 '0%, 100%': { transform: 'rotate(-3deg)' },
                 '50%': { transform: 'rotate(3deg)' },
+              },
+              'bounce-care': {
+                '0%, 100%': { transform: 'translateY(0) scale(1) rotate(0deg)' },
+                '50%': { transform: 'translateY(var(--bounce-height, -20px)) scale(1.1) rotate(0deg)' },
               }
             }
           },

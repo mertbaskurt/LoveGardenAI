@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { 
   User, 
@@ -85,6 +84,7 @@ const App = () => {
   const [plantWisdom, setPlantWisdom] = useState<string | null>(null);
   const [isLoadingWisdom, setIsLoadingWisdom] = useState(false);
   const [onboardingSlide, setOnboardingSlide] = useState(0);
+  const [isCelebrating, setIsCelebrating] = useState(false);
 
   // Image Gen State
   const [imageSize, setImageSize] = useState<'1K' | '2K' | '4K'>('1K');
@@ -213,6 +213,11 @@ const App = () => {
 
     setPlant(updatedPlant);
     setCareHistory([action, ...careHistory]);
+    
+    // Trigger celebration animation
+    setIsCelebrating(true);
+    setTimeout(() => setIsCelebrating(false), 800);
+
     setView('garden');
     
     setIsLoadingWisdom(true);
@@ -429,6 +434,10 @@ const App = () => {
     // Animation variables based on level
     const glowIntensity = Math.min(plant.level * 3, 50); // Max 50px glow radius
     const glowColor = "rgba(244, 63, 94, 0.5)"; // Love-500 with opacity
+    
+    // Dynamic bounce height based on level. 
+    // Level 1 -> -15px, Level 10 -> -60px.
+    const bounceHeight = `-${Math.min(10 + plant.level * 5, 60)}px`;
 
     return (
       <div className="flex flex-col h-full bg-gradient-to-b from-white to-love-50 relative overflow-hidden">
@@ -465,10 +474,11 @@ const App = () => {
           
           <PlantIcon 
              level={plant.level} 
-             className="w-64 h-64 z-10 transition-all duration-1000 animate-sway origin-[50%_80%]"
+             className={`w-64 h-64 z-10 transition-all duration-1000 origin-[50%_80%] ${isCelebrating ? 'animate-bounce-care' : 'animate-sway'}`}
              style={{
-                filter: `drop-shadow(0 0 ${glowIntensity}px ${glowColor})`
-             }} 
+                filter: `drop-shadow(0 0 ${glowIntensity}px ${glowColor})`,
+                '--bounce-height': bounceHeight
+             } as React.CSSProperties} 
           />
         </div>
 
