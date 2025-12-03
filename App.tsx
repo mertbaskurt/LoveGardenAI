@@ -575,19 +575,25 @@ const App = () => {
       <div className="grid grid-cols-2 gap-4 mb-8">
         <div 
           onClick={() => { setCareMessage('💦'); handleSendCare('water', 'Watered the plant'); }}
-          className="aspect-square bg-blue-50 rounded-3xl border-2 border-transparent hover:border-blue-200 flex flex-col items-center justify-center cursor-pointer transition-all active:scale-95"
+          className="aspect-square bg-blue-50 rounded-3xl border-2 border-transparent hover:border-blue-200 flex flex-col items-center justify-center cursor-pointer transition-all active:scale-95 px-2 text-center group"
         >
-          <Droplets className="w-12 h-12 text-blue-400 mb-2" />
+          <Droplets className="w-10 h-10 text-blue-400 mb-2 group-hover:scale-110 transition-transform" />
           <span className="font-bold text-blue-500">Water</span>
-          <span className="text-xs text-blue-300">+20 XP</span>
+          <span className="text-xs text-blue-400 font-bold mb-2 bg-blue-100 px-2 py-0.5 rounded-full">+20 XP</span>
+          <p className="text-[10px] text-blue-300 leading-tight">
+            Essential care. Use for meaningful moments.
+          </p>
         </div>
         <div 
            onClick={() => { setCareMessage('☀️'); handleSendCare('sun', 'Sent sunshine'); }}
-           className="aspect-square bg-yellow-50 rounded-3xl border-2 border-transparent hover:border-yellow-200 flex flex-col items-center justify-center cursor-pointer transition-all active:scale-95"
+           className="aspect-square bg-yellow-50 rounded-3xl border-2 border-transparent hover:border-yellow-200 flex flex-col items-center justify-center cursor-pointer transition-all active:scale-95 px-2 text-center group"
         >
-          <Sun className="w-12 h-12 text-yellow-400 mb-2" />
+          <Sun className="w-10 h-10 text-yellow-400 mb-2 group-hover:scale-110 transition-transform" />
           <span className="font-bold text-yellow-500">Sunlight</span>
-          <span className="text-xs text-yellow-300">+10 XP</span>
+          <span className="text-xs text-yellow-500 font-bold mb-2 bg-yellow-100 px-2 py-0.5 rounded-full">+10 XP</span>
+          <p className="text-[10px] text-yellow-400/80 leading-tight">
+            Quick warmth. Brightens the mood instantly.
+          </p>
         </div>
       </div>
 
@@ -596,7 +602,7 @@ const App = () => {
           <div className="w-full border-t border-gray-100"></div>
         </div>
         <div className="relative flex justify-center text-sm">
-          <span className="px-2 bg-white text-gray-400">Or send a note</span>
+          <span className="px-2 bg-white text-gray-400">Or send a personal note</span>
         </div>
       </div>
 
